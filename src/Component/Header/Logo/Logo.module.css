@@ -1,0 +1,22 @@
+.Logo {
+  width: 130px;
+  display: inline-block;
+  text-align: center;
+  flex: 1;
+}
+
+@media (max-width: 400px) {
+  /* .Logo {
+    margin-left: 10px;
+  } */
+  .Logo {
+    position: relative;
+  }
+  .icon {
+    font-size: 80px !important;
+    display: inline-block;
+    position: absolute;
+    top: 30px;
+    left: 10px;
+  }
+}
