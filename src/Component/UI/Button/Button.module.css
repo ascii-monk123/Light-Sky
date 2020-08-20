@@ -1,0 +1,23 @@
+.Button {
+  display: block;
+  margin: 60px auto;
+  padding: 20px 30px;
+  cursor: pointer;
+  border: 1px solid #fff;
+  background-color: transparent;
+  color: #fff;
+  transition: all 0.5s;
+  outline: none;
+}
+
+.Button:hover {
+  background-color: #fff;
+  color: #777;
+  transform: translateY(-10px);
+}
+
+@media (max-width: 400px) {
+  .Button {
+    padding: 15px 20px;
+  }
+}

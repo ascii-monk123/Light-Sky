@@ -1,0 +1,13 @@
+.SearchPanel {
+  margin: 70px auto;
+  max-width: 600px;
+}
+.input {
+}
+
+@media (max-width: 400px) {
+  .SearchPanel {
+    width: 80%;
+    margin-top: 20px;
+  }
+}

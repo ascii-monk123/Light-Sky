@@ -1,0 +1,20 @@
+.WeatherData {
+  margin-top: 70px;
+}
+.WrapperDiv {
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.MuiCircularProgress-colorPrimary {
+  color: #fff !important;
+}
+
+@media (max-width: 400px) {
+  .WeatherData {
+    margin-top: 40px;
+  }
+}
