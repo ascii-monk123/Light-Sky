@@ -1,0 +1,65 @@
+.WeatherCard {
+  width: 80%;
+  margin: 30px auto;
+}
+
+.Title h1 {
+  font-size: 50px;
+  display: block;
+}
+.Title h3 {
+  font-size: 20px;
+}
+.Wrapper {
+  margin-top: 60px;
+}
+.TextWrapper {
+  display: inline-block;
+  margin-left: 50px;
+}
+.TextWrapper h1 {
+  font-size: 45px;
+}
+.icon {
+  font-size: 100px;
+}
+.ExtraDetails {
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  padding: 10px 0px;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 5px;
+  padding-left: 0px;
+  width: 100%;
+}
+.Upper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-grow: 1;
+}
+
+@media (max-width: 400px) {
+  .WeatherCard {
+    width: 95%;
+  }
+  .ExtraDetails {
+    justify-content: space-evenly;
+  }
+  .Title h1 {
+    font-size: 27px;
+  }
+  .Title h3 {
+    font-size: 15px;
+  }
+
+  .ExtraDetails h3 {
+    font-size: 12px;
+  }
+  .ExtraDetails p {
+    font-size: 12px;
+  }
+}
