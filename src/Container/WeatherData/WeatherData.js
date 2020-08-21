@@ -14,6 +14,7 @@ class WeatherData extends Component {
   state = {
     data: null,
     loading: true,
+    hasError: false,
   };
   async componentDidMount() {
     const query = new URLSearchParams(this.props.location.search);
@@ -21,10 +22,20 @@ class WeatherData extends Component {
     for (let params of query.entries()) {
       city = params[1];
     }
-    this.setState({
-      loading: false,
-    });
-    // const weatherData = await fetchWeather(city);
+
+    try {
+      const data = await fetchWeather(city);
+      data['region'] = city;
+      this.setState({
+        loading: false,
+        data: data,
+      });
+    } catch (err) {
+      this.setState({
+        loading: false,
+        hasError: true,
+      });
+    }
   }
   render() {
     const { classes } = this.props;
@@ -39,7 +50,7 @@ class WeatherData extends Component {
       </div>
     );
     if (!this.state.loading) {
-      weather = <WeatherCard />;
+      weather = <WeatherCard data={this.state.data} />;
     }
 
     return <div className={Classes.WeatherData}>{weather}</div>;
