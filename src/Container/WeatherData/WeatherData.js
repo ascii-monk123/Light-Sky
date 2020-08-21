@@ -5,16 +5,27 @@ import { withStyles } from '@material-ui/core/styles';
 import { fetchWeather } from '../../API/Api';
 import Axios from 'axios';
 import WeatherCard from '../../Component/WeatherCard/WeatherCard';
+import Alert from '@material-ui/lab/Alert';
+import { Animated } from 'react-animated-css';
+
 const styles = (props) => ({
   colorPrimary: {
     color: '#fff',
   },
+  root: {
+    width: '60%',
+    margin: '50px auto',
+  },
 });
+
 class WeatherData extends Component {
   state = {
     data: null,
     loading: true,
     hasError: false,
+  };
+  handleError = () => {
+    this.props.history.push('/');
   };
   async componentDidMount() {
     const query = new URLSearchParams(this.props.location.search);
@@ -39,6 +50,22 @@ class WeatherData extends Component {
   }
   render() {
     const { classes } = this.props;
+    if (this.state.hasError) {
+      return (
+        <Animated
+          animationIn="bounceInLeft"
+          animationOut="fadeOut"
+          isVisible={true}
+          animationInDuration={1500}
+        >
+          <div className={classes.root}>
+            <Alert severity="error" variant="filled" onClose={this.handleError}>
+              An error happened! Go back
+            </Alert>
+          </div>
+        </Animated>
+      );
+    }
     let weather = (
       <div className={Classes.WrapperDiv}>
         <CircularProgress
@@ -50,7 +77,11 @@ class WeatherData extends Component {
       </div>
     );
     if (!this.state.loading) {
-      weather = <WeatherCard data={this.state.data} />;
+      weather = (
+        <React.Fragment>
+          <WeatherCard data={this.state.data} />
+        </React.Fragment>
+      );
     }
 
     return <div className={Classes.WeatherData}>{weather}</div>;
@@ -58,41 +89,3 @@ class WeatherData extends Component {
 }
 
 export default withStyles(styles)(WeatherData);
-
-/**
- * {coord: {…}, weather: Array(1), base: "stations", main: {…}, visibility: 10000, …}
-base: "stations"
-clouds: {all: 0}
-cod: 200
-coord: {lon: 139.75, lat: 35.69}
-dt: 1597946590
-id: 1861060
-main:
-feels_like: 303.65
-humidity: 88
-pressure: 1012
-temp: 301.09
-temp_max: 302.04
-temp_min: 299.82
-__proto__: Object
-name: "Japan"
-sys: {type: 1, id: 8074, country: "JP", sunrise: 1597953882, sunset: 1598001839}
-timezone: 32400
-visibility: 10000
-weather: Array(1)
-0:
-description: "clear sky"
-icon: "01n"
-id: 800
-main: "Clear"
-__proto__: Object
-length: 1
-__proto__: Array(0)
-wind:
-deg: 190
-speed: 6.2
-__proto__: Object
-__proto__: Object
- * 
- * 
- */
