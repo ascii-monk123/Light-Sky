@@ -1,6 +1,24 @@
 .Wrapper {
-  max-width: 600px !important;
+  max-width: 900px !important;
   margin: 120px auto;
+  text-align: center;
+}
+.btn {
+  border: none;
+  background-color: transparent;
+  font-size: 20px;
+  color: #fff;
+  cursor: pointer;
+  margin-right: 20px;
+  display: inline-block;
+  padding: 10px;
+  transition: all 0.5s;
+  outline: none;
+  margin-top: 50px;
+}
+.btn:hover {
+  color: #333;
+  background-color: #fff;
 }
 @media (max-width: 400px) {
   .Wrapper {

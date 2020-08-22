@@ -2,7 +2,6 @@ import React from 'react';
 import Classes from './GetIcons.module.css';
 import {
   FaSun,
-  FaCloudSun,
   FaCloud,
   FaCloudRain,
   FaCloudShowersHeavy,

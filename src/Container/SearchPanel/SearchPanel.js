@@ -4,7 +4,6 @@ import { TextField, InputAdornment } from '@material-ui/core';
 import { BsSearch } from 'react-icons/bs';
 import { withStyles } from '@material-ui/core/styles';
 import Button from '../../Component/UI/Button/Button';
-import axios from '../../axios-weather';
 const styles = {
   root: {
     background: '#fff',

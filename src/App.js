@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import './App.css';
-import axios from './axios-weather';
 import Header from './Component/Header/Header';
 import SearchPanel from './Container/SearchPanel/SearchPanel';
 import { Route, Switch } from 'react-router-dom';

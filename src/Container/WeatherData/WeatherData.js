@@ -1,22 +1,9 @@
 import React, { Component } from 'react';
-import CircularProgress from '@material-ui/core/CircularProgress';
 import Classes from './WeatherData.module.css';
-import { withStyles } from '@material-ui/core/styles';
 import { fetchWeather } from '../../API/Api';
-import Axios from 'axios';
 import WeatherCard from '../../Component/WeatherCard/WeatherCard';
-import Alert from '@material-ui/lab/Alert';
-import { Animated } from 'react-animated-css';
-
-const styles = (props) => ({
-  colorPrimary: {
-    color: '#fff',
-  },
-  root: {
-    width: '60%',
-    margin: '50px auto',
-  },
-});
+import Spinner from '../../Component/UI/Spinner/Spinner';
+import Alerts from '../../Component/UI/Alerts/Alerts';
 
 class WeatherData extends Component {
   state = {
@@ -59,31 +46,12 @@ class WeatherData extends Component {
   }
   /*************************************For redering *******************************************/
   render() {
-    const { classes } = this.props;
     if (this.state.hasError) {
-      return (
-        <Animated
-          animationIn="bounceInLeft"
-          animationOut="fadeOut"
-          isVisible={true}
-          animationInDuration={1500}
-        >
-          <div className={classes.root}>
-            <Alert severity="error" variant="filled" onClose={this.handleError}>
-              An error happened! Go back
-            </Alert>
-          </div>
-        </Animated>
-      );
+      return <Alerts error={this.handleError} />;
     }
     let weather = (
       <div className={Classes.WrapperDiv}>
-        <CircularProgress
-          size={'5rem'}
-          classes={{
-            colorPrimary: classes.colorPrimary,
-          }}
-        />
+        <Spinner />
       </div>
     );
     if (!this.state.loading) {
@@ -91,15 +59,15 @@ class WeatherData extends Component {
         <React.Fragment>
           <WeatherCard data={this.state.data} />
           <div className={Classes.btnContainer}>
-            <a
+            <button
               className={Classes.btn}
               onClick={() => this.props.history.push('/')}
             >
               Go back
-            </a>
-            <a className={Classes.btn} onClick={this.getForcast}>
+            </button>
+            <button className={Classes.btn} onClick={this.getForcast}>
               Get Forcast
-            </a>
+            </button>
           </div>
         </React.Fragment>
       );
@@ -109,4 +77,4 @@ class WeatherData extends Component {
   }
 }
 
-export default withStyles(styles)(WeatherData);
+export default WeatherData;

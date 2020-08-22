@@ -2,7 +2,6 @@ import React from 'react';
 import Classes from './WeatherCard.module.css';
 import Grid from '@material-ui/core/Grid';
 import { capitalize, kelvinToCelsius, findTime } from '../../Helpers/helpers';
-import { FaSun } from 'react-icons/fa';
 import ReturnIcon from '../../Helpers/GetIcons';
 import { Animated } from 'react-animated-css';
 

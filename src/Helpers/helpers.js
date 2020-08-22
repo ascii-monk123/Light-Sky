@@ -8,7 +8,6 @@ const findTime = (unixNum) => {
   let date = new Date(unixNum * 1000);
   let meridian = '';
   let hours = parseInt(date.getHours());
-  console.log(date);
   if (hours >= 0 && hours < 12) {
     meridian = 'am';
   } else {
@@ -25,4 +24,35 @@ const findTime = (unixNum) => {
   return `${hours}:${minutes} ${meridian}`;
 };
 
-export { capitalize, kelvinToCelsius, findTime };
+const findDay = (unixNum) => {
+  let date = new Date(unixNum * 1000);
+  const days = [
+    'Sunday',
+    'Monday',
+    'Tuesday',
+    'Wednesday',
+    'Thursday',
+    'Friday',
+    'Saturday',
+  ];
+  return days[date.getDay()];
+};
+const findDate = (unixNum) => {
+  let date = new Date(unixNum * 1000);
+  let months = [
+    'Jan',
+    'Feb',
+    'Apr',
+    'May',
+    'June',
+    'July',
+    'Aug',
+    'Sept',
+    'Oct',
+    'Nov',
+    'Dec',
+  ];
+  return months[date.getMonth()] + ' ' + date.getDate();
+};
+
+export { capitalize, kelvinToCelsius, findTime, findDay, findDate };

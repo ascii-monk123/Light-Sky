@@ -1,5 +1,11 @@
 import axios from '../axios-weather';
-import { findTime } from '../Helpers/helpers';
+import {
+  findTime,
+  findDay,
+  kelvinToCelsius,
+  capitalize,
+  findDate,
+} from '../Helpers/helpers';
 const key = '600409249d829db023a38425bd27549b';
 const iconUrl = 'http://openweathermap.org/img/wn';
 // http://openweathermap.org/img/wn/10d@2x.png
@@ -39,11 +45,13 @@ const fetchForecast = async (query) => {
   const data = list.map((weather, index) => {
     return {
       time: findTime(weather.dt),
-      tempMin: weather.main.temp_min,
-      tempMax: weather.main.temp_max,
-      main: weather.weather[0].description,
+      tempMin: kelvinToCelsius(weather.main.temp_min),
+      tempMax: kelvinToCelsius(weather.main.temp_max),
+      main: capitalize(weather.weather[0].description),
       windSpeed: weather.wind.speed,
       imgUrl: `${iconUrl}/${weather.weather[0].icon}@4x.png`,
+      day: findDay(weather.dt),
+      date: findDate(weather.dt),
     };
   });
   return data;

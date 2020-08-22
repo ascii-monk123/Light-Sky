@@ -7,14 +7,12 @@ import ForeCastCard from '../UI/ForeCastCard/ForeCastCard';
 const ForeCast = (props) => {
   const weather = props.dataList.map((data, index) => (
     <div className="item" key={index}>
-      <h1>{data.main}</h1>
+      <ForeCastCard data={data} />
     </div>
   ));
   return (
     <OwlCarousel
       className="owl-theme"
-      loop
-      center={true}
       margin={10}
       items={1}
       nav
@@ -25,11 +23,14 @@ const ForeCast = (props) => {
         },
         600: {
           items: 2,
-          dotsEach: 3,
+          dotsEach: 2,
         },
         1000: {
           items: 3,
-          dotsEach: 3,
+          dotsEach: 2,
+        },
+        1200: {
+          items: 3,
         },
       }}
     >
