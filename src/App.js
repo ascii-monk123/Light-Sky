@@ -5,6 +5,7 @@ import SearchPanel from './Container/SearchPanel/SearchPanel';
 import { Route, Switch } from 'react-router-dom';
 import WeatherData from './Container/WeatherData/WeatherData';
 import WeatherForecast from './Container/WeatherForecast/WeatherForecast';
+import NotFound from './Component/404/NotFound';
 
 class App extends Component {
   componentDidMount() {}
@@ -16,6 +17,7 @@ class App extends Component {
           <Route path="/weather/:city" component={WeatherForecast} />
           <Route path="/" exact component={SearchPanel} />
           <Route path="/weather" component={WeatherData} />
+          <Route component={NotFound} />
         </Switch>
       </React.Fragment>
     );

@@ -1,0 +1,29 @@
+.page-container .bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw !important;
+  height: 100vh !important;
+  background-size: cover !important;
+  mix-blend-mode: overlay !important;
+  text-align: center;
+  background-color: #000;
+}
+button {
+  cursor: pointer;
+  padding: 10px;
+  background-color: transparent;
+  border: 1px solid #fff;
+  color: #fff;
+  margin-top: 10px;
+  z-index: 2000;
+}
+.btn:hover {
+  background-color: #fff;
+  color: #000;
+}
+@media (max-width: 400px) {
+  h1 {
+    color: #fff !important;
+  }
+}
