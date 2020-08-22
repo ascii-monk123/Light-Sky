@@ -23,10 +23,18 @@ class WeatherData extends Component {
     data: null,
     loading: true,
     hasError: false,
+    query: '',
   };
+  /*****************Error handler *************/
   handleError = () => {
     this.props.history.push('/');
   };
+
+  /************In order to get the forcast ***********/
+  getForcast = () => {
+    this.props.history.push(`/weather/${this.state.query}`);
+  };
+  /*****************Fetching the date from the server ****************************** */
   async componentDidMount() {
     const query = new URLSearchParams(this.props.location.search);
     let city = '';
@@ -40,6 +48,7 @@ class WeatherData extends Component {
       this.setState({
         loading: false,
         data: data,
+        query: city,
       });
     } catch (err) {
       this.setState({
@@ -48,6 +57,7 @@ class WeatherData extends Component {
       });
     }
   }
+  /*************************************For redering *******************************************/
   render() {
     const { classes } = this.props;
     if (this.state.hasError) {
@@ -80,6 +90,17 @@ class WeatherData extends Component {
       weather = (
         <React.Fragment>
           <WeatherCard data={this.state.data} />
+          <div className={Classes.btnContainer}>
+            <a
+              className={Classes.btn}
+              onClick={() => this.props.history.push('/')}
+            >
+              Go back
+            </a>
+            <a className={Classes.btn} onClick={this.getForcast}>
+              Get Forcast
+            </a>
+          </div>
         </React.Fragment>
       );
     }

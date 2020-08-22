@@ -1,5 +1,8 @@
 import axios from '../axios-weather';
+import { findTime } from '../Helpers/helpers';
 const key = '600409249d829db023a38425bd27549b';
+const iconUrl = 'http://openweathermap.org/img/wn';
+// http://openweathermap.org/img/wn/10d@2x.png
 
 const fetchWeather = async (query) => {
   const {
@@ -29,7 +32,24 @@ const fetchWeather = async (query) => {
   };
 };
 
-export { fetchWeather };
+const fetchForecast = async (query) => {
+  const {
+    data: { list },
+  } = await axios.get(`/forecast?q=${query}&appid=${key}`);
+  const data = list.map((weather, index) => {
+    return {
+      time: findTime(weather.dt),
+      tempMin: weather.main.temp_min,
+      tempMax: weather.main.temp_max,
+      main: weather.weather[0].description,
+      windSpeed: weather.wind.speed,
+      imgUrl: `${iconUrl}/${weather.weather[0].icon}@4x.png`,
+    };
+  });
+  return data;
+};
+
+export { fetchWeather, fetchForecast };
 
 /**
  * {coord: {…}, weather: Array(1), base: "stations", main: {…}, visibility: 10000, …}

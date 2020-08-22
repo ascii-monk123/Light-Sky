@@ -12,9 +12,36 @@
 .MuiCircularProgress-colorPrimary {
   color: #fff !important;
 }
+.btnContainer {
+  margin: 150px auto 60px auto;
+  max-width: 600px;
+  display: flex;
+  justify-content: center;
+}
+.btn {
+  border: none;
+  background-color: transparent;
+  font-size: 20px;
+  color: #fff;
+  cursor: pointer;
+  margin-right: 20px;
+  display: inline-block;
+  padding: 10px;
+  transition: all 0.5s;
+}
+.btn:hover {
+  color: #333;
+  background-color: #fff;
+}
 
 @media (max-width: 400px) {
   .WeatherData {
     margin-top: 40px;
+  }
+  .btnContainer {
+    margin-top: 60px;
+  }
+  .btn {
+    font-size: 15px;
   }
 }

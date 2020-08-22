@@ -1,0 +1,9 @@
+.Wrapper {
+  max-width: 600px !important;
+  margin: 120px auto;
+}
+@media (max-width: 400px) {
+  .Wrapper {
+    width: 300px;
+  }
+}
