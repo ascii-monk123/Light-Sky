@@ -5,7 +5,22 @@ import { capitalize, kelvinToCelsius, findTime } from '../../Helpers/helpers';
 import ReturnIcon from '../../Helpers/GetIcons';
 import { Animated } from 'react-animated-css';
 
+const fetchDate = () =>
+  new Date()
+    .toDateString()
+    .split(' ')
+    .map((ele, index) => {
+      if (index === 0) {
+        return ele + ' , ';
+      } else if (index <= 2) {
+        return ele + ' ';
+      }
+      return '';
+    })
+    .join('');
+
 const WeatherCard = (props) => {
+  fetchDate();
   return (
     <Animated
       animationIn="pulse"
@@ -18,7 +33,7 @@ const WeatherCard = (props) => {
           <h1>
             {capitalize(props.data.region)} ,{props.data.country}
           </h1>
-          <h3>Thurday 20 August</h3>
+          <h3>{fetchDate()}</h3>
         </div>
         <div className={Classes.Wrapper}>
           <Grid container spacing={3}>
